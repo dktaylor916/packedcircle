@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/packedcircle/static/css/main.4b9a7a35.css",
+    "main.js": "/packedcircle/static/js/main.d2055e6d.js",
+    "index.html": "/packedcircle/index.html",
+    "main.4b9a7a35.css.map": "/packedcircle/static/css/main.4b9a7a35.css.map",
+    "main.d2055e6d.js.map": "/packedcircle/static/js/main.d2055e6d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b9a7a35.css",
+    "static/js/main.d2055e6d.js"
+  ]
+}
