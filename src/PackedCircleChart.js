@@ -152,7 +152,10 @@ else{
 .attr('text-anchor','middle')
 .attr('font-family','Open Sans')
 .attr('font-size',10)
-.text(function(d,i){ return d.data.help})
+.text(function(d,i){ if(i < 6 || [12,13,14,10,16,17].includes(i)  ){
+  return 
+}
+else{ return d.data.help}})
 .style('fill',function(d){
     if (d.data.help == 'Police'){
         return 'white'
@@ -184,7 +187,7 @@ elemEnter
   return 0
 }
 if([12,13,14,10,16,17].includes(i)){
-  return "-2.4em"
+  return 
 }
 else{
   return "1.4em"
@@ -194,7 +197,7 @@ else{
 .attr('font-family','Open Sans')
 .attr('font-size',10)
 .text(function(d,i){
-  if(i < 6){
+  if(i < 6 || [12,13,14,10,16,17].includes(i)  ){
     return 
   }
   else{ return d.data.mean +' %'}})
@@ -209,9 +212,6 @@ else{
 .style('opacity',function(d,i){ if (i < 6){
   return 0
 }
-if([12,13,14,10,16,17].includes(i)){
-  return 0
-}
 else{
   return 1
 }
@@ -219,20 +219,53 @@ else{
 
 ///ADD MOUSEOVER AND MOUSEOUT EFFECT TO HIGHLIGHT SELECTED CIRCLE (IGNORING THE LARGER GROUPED CIRCLES)
 
-elemEnter.selectAll('circle.node')
+elemEnter
 .on('mouseover', function(d) {
-  
-  if(d3.select(this).style('fill') == 'rgb(250, 250, 250)'){
+
+  var hiddenNames = ['Doctor/medical personnel','Social work organization','Lawyer','Religious leader','Boyfriend','Husband/Partner']
+
+
+  if(d3.select(this).select('circle').style('fill') == 'rgb(250, 250, 250)'){
    
     return 
   }
 
+  if (hiddenNames.includes(d3.select(this).data()[0].data['help'])){
+    
+    var selectedClass = d3.select(this).attr("class",'selected').attr("class")
+    var selectedColor =   d3.select(this).attr("class",'selected').select('circle.node').style("fill")
+    var selectedText =   d3.select(this).data()[0].data['grouping']
+  
+    d3.selectAll("."+selectedClass).selectAll('.help').transition().duration(50).style("opacity",1)
+    d3.selectAll("."+selectedClass).selectAll('.pct').transition().duration(50).style("opacity",1)
+    d3.selectAll("."+selectedClass).select('circle.node').transition().duration(50).style("opacity",1).style('stroke','black').style('stroke-width',1)
+    
+    d3.selectAll("*:not(."+selectedClass+")").select('.help').transition().duration(50).style("opacity",0)
+    d3.selectAll("*:not(."+selectedClass+")").select('.pct').transition().duration(50).style("opacity",0)
+    d3.selectAll("*:not(."+selectedClass+")").select('circle.node').transition().duration(50).style("opacity",.5)
+    
+    
+    
+    d3.select(this).append('text').attr("x",function(d){return d.x}).attr("y",function(d){return d.y}).attr('text-anchor','middle')
+    .attr('font-family','Open Sans').attr("dy",'-3.6em').attr('font-size',10).text(function(d){return d.data.help})
+    d3.select(this).append('text').attr("x",function(d){return d.x}).attr("y",function(d){return d.y}).attr('text-anchor','middle')
+    .attr('font-family','Open Sans').attr("dy",'-2.2em').attr('font-size',10).text(function(d){return d.data.mean + ' %'})
+
+    d3.selectAll('.legendDots').filter(function(d){ return d == selectedColor}).transition().duration(50).style('opacity',1)
+    d3.selectAll('.legendDots').filter(function(d){ return d != selectedColor}).transition().duration(50).style('opacity',.2)
+  
+    d3.selectAll('.legendText').filter(function(d){ return d == selectedText}).transition().duration(50).style('opacity',1)
+    d3.selectAll('.legendText').filter(function(d){ return d != selectedText}).transition().duration(50).style('opacity',.2)
+
+
+  }
+
 
   else{
-  console.log(this.parentNode)
-  var selectedClass = d3.select(this.parentNode).attr("class",'selected').attr("class")
-  var selectedColor =   d3.select(this.parentNode).attr("class",'selected').select('circle.node').style("fill")
-  var selectedText =   d3.select(this.parentNode).data()[0].data['grouping']
+  console.log(d3.select(this).data()[0].data['help'])
+  var selectedClass = d3.select(this).attr("class",'selected').attr("class")
+  var selectedColor =   d3.select(this).attr("class",'selected').select('circle.node').style("fill")
+  var selectedText =   d3.select(this).data()[0].data['grouping']
 
   d3.selectAll("."+selectedClass).selectAll('.help').transition().duration(50).style("opacity",1)
   d3.selectAll("."+selectedClass).selectAll('.pct').transition().duration(50).style("opacity",1)
@@ -247,20 +280,40 @@ elemEnter.selectAll('circle.node')
 
   d3.selectAll('.legendText').filter(function(d){ return d == selectedText}).transition().duration(50).style('opacity',1)
   d3.selectAll('.legendText').filter(function(d){ return d != selectedText}).transition().duration(50).style('opacity',.2)
-
-
-
-
-
 }
   
 
 })
 
 .on('mouseout', function() {
+  var hiddenNames = ['Doctor/medical personnel','Social work organization','Lawyer','Religious leader','Boyfriend','Husband/Partner']
+
+  if (hiddenNames.includes(d3.select(this).data()[0].data['help'])){
+        
+
+        d3.selectAll('.legendDots').transition().duration(50).style('opacity',1)
+        d3.selectAll('.legendText').transition().duration(50).style('opacity',1)
+        d3.select(this).classed('selected',false)
+        d3.select(this).selectAll('text').remove()
+        
+        d3.selectAll('circle.node').transition().duration(50).style('opacity',1)
+          .style('stroke',function(d,i){
+              if(i==0){
+                  return 'none'
+              }
+              else{
+              return '#CCCCCC'}
+            })
+          .style('stroke-width',.5)
+
+  }
+
+
+
+  else{
   d3.selectAll('.legendDots').transition().duration(50).style('opacity',1)
   d3.selectAll('.legendText').transition().duration(50).style('opacity',1)
-  d3.select(this.parentNode).classed('selected',false)
+  d3.select(this).classed('selected',false)
   d3.selectAll('.help').transition().duration(50).style('opacity',function(d){
     if (d.data.mean < 5){
       return 0
@@ -282,6 +335,8 @@ elemEnter.selectAll('circle.node')
         return '#CCCCCC'}
       })
     .style('stroke-width',.5)
+  
+  }
   
  
 })
