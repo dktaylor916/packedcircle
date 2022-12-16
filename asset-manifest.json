@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/packedcircle/static/css/main.4b9a7a35.css",
-    "main.js": "/packedcircle/static/js/main.d2055e6d.js",
+    "main.css": "/packedcircle/static/css/main.20050898.css",
+    "main.js": "/packedcircle/static/js/main.e5d823a4.js",
     "index.html": "/packedcircle/index.html",
-    "main.4b9a7a35.css.map": "/packedcircle/static/css/main.4b9a7a35.css.map",
-    "main.d2055e6d.js.map": "/packedcircle/static/js/main.d2055e6d.js.map"
+    "main.20050898.css.map": "/packedcircle/static/css/main.20050898.css.map",
+    "main.e5d823a4.js.map": "/packedcircle/static/js/main.e5d823a4.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b9a7a35.css",
-    "static/js/main.d2055e6d.js"
+    "static/css/main.20050898.css",
+    "static/js/main.e5d823a4.js"
   ]
 }
