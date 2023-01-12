@@ -1,1 +1,1 @@
-{"version":3,"file":"static/css/main.c440e4a0.css","mappings":"AACA,EAEI,cAAe,CADf,gCAEJ","sources":["PackedCircleChart.css"],"sourcesContent":["\n*{\n    font-family: 'Open Sans', sans-serif;\n    cursor: default;\n}\n\n"],"names":[],"sourceRoot":""}
+{"version":3,"file":"static/css/main.c440e4a0.css","mappings":"AAAA,EAEE,cAAe,CADf,gCAEF","sources":["PackedCircleChart.css"],"sourcesContent":["* {\n  font-family: \"Open Sans\", sans-serif;\n  cursor: default;\n}\n"],"names":[],"sourceRoot":""}
