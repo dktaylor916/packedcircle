@@ -1,0 +1,62 @@
+[
+  {
+    "help": "Own Family",
+    "mean": 64,
+    "grouping": "Family"
+  },
+  {
+    "help": "Partner's Family",
+    "mean": 26,
+    "grouping": "Family"
+  },
+  {
+    "help": "Husband/Partner",
+    "mean": 1,
+    "grouping": "Intimate partner"
+  },
+  {
+    "help": "Boyfriend",
+    "mean": 1,
+    "grouping": "Intimate partner"
+  },
+  {
+    "help": "Neighbor",
+    "mean": 13,
+    "grouping": "Friends / community"
+  },
+  {
+    "help": "Friend",
+    "mean": 10,
+    "grouping": "Friends / community"
+  },
+  {
+    "help": "Religious leader",
+    "mean": 3,
+    "grouping": "Friends / community"
+  },
+  {
+    "help": "Police",
+    "mean": 9,
+    "grouping": "Services"
+  },
+  {
+    "help": "Social work organization",
+    "mean": 2,
+    "grouping": "Services"
+  },
+  {
+    "help": "Doctor/medical personnel",
+    "mean": 2,
+    "grouping": "Services"
+  },
+  {
+    "help": "Lawyer",
+    "mean": 2,
+    "grouping": "Services"
+  },
+  {
+    "help": "Other",
+    "mean": 7,
+    "grouping": "Other"
+  }
+]

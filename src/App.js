@@ -1,7 +1,7 @@
-import PackedCircleChart from "./PackedCircleChart";
-import Sources from "./Sources";
-import Legend from "./Legend";
-import Title from "./Title";
+import PackedCircleChart from "./components/PackedCircleChart/PackedCircleChart";
+import Sources from "./components/Sources/Sources";
+import Legend from "./components/Legend/Legend";
+import Title from "./components/Title/Title";
 
 function App() {
   return (

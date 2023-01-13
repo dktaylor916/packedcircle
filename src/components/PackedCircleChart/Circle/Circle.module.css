@@ -1,0 +1,7 @@
+.circle {
+  transition: opacity 300ms;
+}
+
+.outer {
+  fill: #cccccc;
+}

@@ -1,6 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import * as d3 from "d3";
-import "./PackedCircleChart.css";
 
 function Sources() {
   useEffect(() => {
